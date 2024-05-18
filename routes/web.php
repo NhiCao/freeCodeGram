@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +22,8 @@ Route::get('/home', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/portfolio/{username}', [PortfolioController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
