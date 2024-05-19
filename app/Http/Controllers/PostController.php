@@ -18,10 +18,14 @@ class PostController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
+        $imagePath = $request['image']->store('uploads');
+
         $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['image'] = $imagePath;
 
         Post::create($validatedData);
 
         return "Successfully stored the post";
     }
 }
+
