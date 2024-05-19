@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function portfolio() {
         return $this->hasOne(Portfolio::class);
     }
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }
