@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
 
 class PostController extends Controller
 {
@@ -18,20 +19,24 @@ class PostController extends Controller
         return view('post.create');
     }
 
-public function store(Request $request) {
-    $validatedData = $request->validate([
-        'caption' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-    ]);
+    public function store(Request $request) {
+        $validatedData = $request->validate([
+            'caption' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
 
-    $imagePath = $request['image']->store('uploads', 'public');
+        $imagePath = $request['image']->store('uploads', 'public');
 
-    $validatedData['user_id'] = auth()->user()->id;
-    $validatedData['image'] = $imagePath;
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['image'] = $imagePath;
 
-    Post::create($validatedData);
+        $image = ImageManager::imagick()->read(str_replace('/', '\\', public_path("storage/{$imagePath}")));
+        $image->cover(400, 400);
+        $image->save();
 
-    return "Successfully stored the post";
-}
+        Post::create($validatedData);
+
+        return "Successfully stored the post";
+    }
 }
 
