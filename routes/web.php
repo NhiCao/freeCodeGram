@@ -24,12 +24,12 @@ Route::get('/home', function () {
     ]);
 });
 
-Route::get('/portfolio/{username}', [PortfolioController::class, 'show'])->middleware('auth');
+Route::get('/portfolios/{username}', [PortfolioController::class, 'show'])->middleware('auth');
+// Route::put('/portfolios/{username}', [PortfolioController::class, 'update'])->middleware('auth');
+Route::put('/portfolios/{username}', [PortfolioController::class, 'update']);
 
 Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
-
 Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
-
 Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('auth');
 
 Route::get('/dashboard', function () {
