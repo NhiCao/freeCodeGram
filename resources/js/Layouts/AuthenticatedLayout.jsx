@@ -16,14 +16,17 @@ export default function Authenticated({ user, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                    <img src="/img/instagram-icon.png" style={{height: "40px", borderRight: "2px solid #333"}} className="pr-6" />
                                 </Link>
                             </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-4 sm:flex font-mono text-2xl pt-4">
+                                {/* <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     FreeCodeGram
-                                </NavLink>
+                                </NavLink> */}
+                                <Link href="/">
+                                    FreeCodeGram
+                                </Link>
                             </div>
                         </div>
 
@@ -113,11 +116,11 @@ export default function Authenticated({ user, header, children }) {
                 </div>
             </nav>
 
-            {header && (
+            {/* {header && (
                 <header className="bg-white shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
                 </header>
-            )}
+            )} */}
 
             <main>{children}</main>
         </div>
