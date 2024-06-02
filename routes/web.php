@@ -16,11 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
+    $user = auth()->user();
     return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'user' => $user
     ]);
 });
 

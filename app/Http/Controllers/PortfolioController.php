@@ -4,15 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use Inertia\Inertia;
 use App\Models\User;
+
 
 class PortfolioController extends Controller
 {
     public function show($username)
     {
         $user = User::where('username', $username)->first();
-        return $user;
+        return Inertia::render('Home', [
+            'user' => $user
+        ]);
     }
+
+    // public function show($username)
+    // {
+    //     $user = User::where('username', $username)->first();
+    //     return Inertia::render('Home', [
+    //         'user' => $user
+    //     ]);
+    // }
 
     public function update($username, Request $request)
     {
