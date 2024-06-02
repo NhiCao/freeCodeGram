@@ -20,7 +20,7 @@ Route::get('/home', function () {
     return Inertia::render('Home', [
         'user' => $user
     ]);
-});
+})->name('home');
 
 Route::get('/portfolios/{username}', [PortfolioController::class, 'show'])->middleware('auth');
 // Route::put('/portfolios/{username}', [PortfolioController::class, 'update'])->middleware('auth');
