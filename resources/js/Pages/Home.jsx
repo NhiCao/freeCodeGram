@@ -23,15 +23,14 @@ export default function Home(props) {
                             </div>
                             <div className="col-span-8 p-5">
                                 <div className="d-flex justify-content-between align-items-baseline">
-                                    <div className="d-flex align-items-center pb-3">
-                                        <div className="h4 text-xl font-bold">{ props.user.username }</div>
+                                    <div className="d-flex flex flex-row align-items-center pb-3">
+                                        <div className="h4 text-xl font-bold"><a href={"/portfolios/" + props.user.username}>{ props.user.username }</a></div>
+                                        <div className="h5 text-lg text-blue-600 pl-64"><a href="/posts/create">+ Add Post</a></div>
 
-                                        <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                                        {/* <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button> */}
                                     </div>
 
-                                    {/* @can('update', $user->profile)
-                                        <a href="/p/create">Add New Post</a>
-                                    @endcan */}
+                                    
 
                                 </div>
 
