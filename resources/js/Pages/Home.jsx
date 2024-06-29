@@ -19,7 +19,7 @@ export default function Home(props) {
                         <div className="grid grid-cols-12 gap-2">
                             <div className="col-span-4 p-5">
                                 {/* <img src="{{ $user->profile->profileImage() }}" class="rounded-circle w-100"> */}
-                                <img src="/img/winterball.jpg" className="rounded-full rounded-full w-48 h-48"></img>
+                                <img src="/img/rainy-night.jpeg" className="rounded-full rounded-full w-48 h-48"></img>
                             </div>
                             <div className="col-span-8 p-5">
                                 <div className="d-flex justify-content-between align-items-baseline">

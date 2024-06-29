@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
+use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -16,7 +17,12 @@ class PostController extends Controller
     }
 
     public function create() {
-        return view('post.create');
+        // return view('post.create');
+        $user = auth()->user();
+        return Inertia::render('Post/CreatePost', [
+            'user' => $user,
+            'portfolio' => $user->portfolio
+        ]);
     }
 
     public function store(Request $request) {
@@ -36,7 +42,7 @@ class PostController extends Controller
 
         Post::create($validatedData);
 
-        return "Successfully stored the post";
+        return redirect('/portfolios/' . auth()->user()->username);
     }
 }
 
