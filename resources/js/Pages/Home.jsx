@@ -1,12 +1,14 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Home({ auth, user }) {
+export default function Home(props) {
     return (
         <AuthenticatedLayout
-            user={auth.user}
+            user={props.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Home</h2>}
         >
+
+        {/* <div> */}
             <Head title="Home" />
 
             <div className="py-12">
@@ -22,7 +24,7 @@ export default function Home({ auth, user }) {
                             <div className="col-span-8 p-5">
                                 <div className="d-flex justify-content-between align-items-baseline">
                                     <div className="d-flex align-items-center pb-3">
-                                        <div className="h4 text-xl font-bold">{ user.username }</div>
+                                        <div className="h4 text-xl font-bold">{ props.user.username }</div>
 
                                         <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                                     </div>
@@ -49,12 +51,8 @@ export default function Home({ auth, user }) {
                                     <div className="pr-5 text-sm"><strong>20</strong> following</div>
                                 </div>
 
-                                <div className='pt-6'>Being just you is more than enough.</div>
-                                <div className='pt-2'><a href="https://www.instagram.com/" className="text-blue-600 visited:text-purple-600">https://www.instagram.com/</a></div>
-                                
-                                {/* <div className="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
-                                <div>{{ $user->profile->description }}</div>
-                                <div><a href="#">{{ $user->profile->url }}</a></div> */}
+                                <div className='pt-5'>{ props.user.portfolio.description }</div>
+                                <div><a href={ props.user.portfolio.url } className="text-blue-600 visited:text-purple-600">{ props.user.portfolio.url }</a></div>
 
                             </div>
 
@@ -79,7 +77,7 @@ export default function Home({ auth, user }) {
             </div>
 
             
-
+        {/* </div> */}
 
 
         </AuthenticatedLayout>
