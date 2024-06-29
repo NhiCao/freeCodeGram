@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/react';
 export default function Home(props) {
     return (
         <AuthenticatedLayout
-            user={props.user}
+            authenticatedUser={props.user}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Home</h2>}
         >
 
@@ -51,8 +51,8 @@ export default function Home(props) {
                                     <div className="pr-5 text-sm"><strong>20</strong> following</div>
                                 </div>
 
-                                <div className='pt-5'>{ props.user.portfolio.description }</div>
-                                <div><a href={ props.user.portfolio.url } className="text-blue-600 visited:text-purple-600">{ props.user.portfolio.url }</a></div>
+                                <div className='pt-5'>{ props.portfolio.description }</div>
+                                <div><a href={ props.portfolio.url } className="text-blue-600 visited:text-purple-600">{ props.user.portfolio.url }</a></div>
 
                             </div>
 
