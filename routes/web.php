@@ -33,6 +33,7 @@ Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('auth');
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->middleware('auth');
 Route::put('/posts/{post}', [PostController::class, 'update'])->middleware('auth');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware('auth');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

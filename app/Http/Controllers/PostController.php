@@ -57,7 +57,6 @@ class PostController extends Controller
     }
 
     public function update($postId, Request $request) {
-        $a = 4;
         $validatedData = $request->validate([
             'caption' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
@@ -78,6 +77,17 @@ class PostController extends Controller
         $post->image = $imagePath;
 
         $post->save();
+
+        return redirect('/portfolios/' . auth()->user()->username);
+    }
+
+    public function destroy($postId) {
+        $post = Post::findOrFail($postId);
+        if (!$post) {
+            return redirect('/portfolios/' . auth()->user()->username);
+        }
+
+        $post->forceDelete();
 
         return redirect('/portfolios/' . auth()->user()->username);
     }

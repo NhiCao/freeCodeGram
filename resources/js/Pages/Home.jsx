@@ -70,7 +70,7 @@ export default function Home(props) {
 
                         </div>
 
-                        <div className="grid grid-cols-12 gap-2 pl-4 pr-4">
+                        <div className="grid grid-cols-12 gap-2 pl-4 pr-4 pb-4">
                             {posts}
                         </div>
 
