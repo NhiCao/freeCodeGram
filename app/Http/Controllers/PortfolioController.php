@@ -15,13 +15,10 @@ class PortfolioController extends Controller
     public function show($username)
     {
         $user = User::where('username', $username)->first();
-        // return Inertia::render('Home', [
-        //     'user1' => $user,
-        //     // 'portfolio' => $user->portfolio,
-        // ]);
         return Inertia::render('Home', [
             'user' => $user,
-            'portfolio' => $user->portfolio
+            'portfolio' => $user->portfolio,
+            'posts' => $user->posts
         ]);
     }
 

@@ -19,7 +19,8 @@ Route::get('/home', function () {
     $user = auth()->user();
     return Inertia::render('Home', [
         'user' => $user,
-        'portfolio' => $user->portfolio
+        'portfolio' => $user->portfolio,
+        'posts' => $user->posts
     ]);
 })->name('home');
 

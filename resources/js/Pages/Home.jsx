@@ -2,6 +2,16 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
 export default function Home(props) {
+    const posts = [];
+
+    for (let i = 0; i < props.posts.length; i++) {
+        posts.push(
+            <div className="col-span-4 p-1">
+                <img src={"/storage/" + props.posts[i].image} alt="" />
+            </div>
+        );
+    }
+
     return (
         <AuthenticatedLayout
             authenticatedUser={props.user}
@@ -58,15 +68,7 @@ export default function Home(props) {
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 pl-4 pr-4">
-                            <div className="col-span-4 p-1">
-                                <img src="/img/winterball.jpg" alt="" />
-                            </div>
-                            <div className="col-span-4 p-1">
-                                <img src="/img/winterball.jpg" alt="" />
-                            </div>
-                            <div className="col-span-4 p-1">
-                                <img src="/img/winterball.jpg" alt="" />
-                            </div>
+                            {posts}
                         </div>
 
 
