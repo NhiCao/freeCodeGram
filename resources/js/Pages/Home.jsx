@@ -7,7 +7,10 @@ export default function Home(props) {
     for (let i = 0; i < props.posts.length; i++) {
         posts.push(
             <div className="col-span-4 p-1">
-                <img src={"/storage/" + props.posts[i].image} alt="" />
+                <a href={"/posts/" + props.posts[i].id }>
+                    <img src={"/storage/" + props.posts[i].image} alt="" />
+                </a>
+                
             </div>
         );
     }
